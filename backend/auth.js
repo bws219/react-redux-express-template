@@ -1,11 +1,9 @@
 "use strict";
 var express = require('express');
 var router = express.Router();
+const { User, Post, Comment, Vote } = require('../models');
 
-module.exports = function (passport, Models) {
-	const { User, Post, Comment, Vote } = Models;
-
-	//testing
+module.exports = function (passport) {
 
 	router.post('/login', function (req, res, next) {
 		passport.authenticate('local', function (err, user) {
@@ -36,12 +34,12 @@ module.exports = function (passport, Models) {
 				username: body.username
 			}
 		})
-			.then((result) => {
-				console.log(result)
-				if (result.length) {
+			.then((searchResult) => {
+				console.log(searchResult)
+				if (searchResult.length) {
 					res.json({
 						success: false,
-						message: 'Username ' + result[0].dataValues.username + ' is taken.'
+						message: 'Username ' + searchResult[0].dataValues.username + ' is taken.'
 					});
 				}
 				else {
@@ -49,7 +47,7 @@ module.exports = function (passport, Models) {
 						username: body.username,
 						password: body.password
 					})
-						.then(result2 => {
+						.then(insertResult => {
 							res.json({
 								success: true,
 								message: 'Registered successfully!'
@@ -58,12 +56,13 @@ module.exports = function (passport, Models) {
 				}
 			})
 			.catch((err) => {
-				res.send('Database error:', err)
-				console.log(err);
+				res.json({
+					success: false,
+					message: 'Database error:' + err
+				})
+				console.log('Database error:', err);
 			})
 	})
-
-
 
 	router.post('/logout', (req, res) => {
 		req.logout();

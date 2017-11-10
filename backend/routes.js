@@ -1,23 +1,17 @@
 const express = require('express');
 const router = express.Router();
-
+const { User, Post, Comment, Vote } = require('../models');
 // YOUR API ROUTES HERE
 
+router.post('/register', (req, res) => {
 
-module.exports = function (Models) {
-    const { User, Post, Comment, Vote } = Models;
+})
 
+router.post('/login', (req, res) => {
+    res.json({
+        message: 'hello'
+    });
+})
 
-    router.post('/register', (req, res) => {
-
-    })
-
-    router.post('/login', (req, res) => {
-        res.json({
-            message: 'hello'
-        });
-    })
-
-    return router;
-}
+module.exports = router;
 
