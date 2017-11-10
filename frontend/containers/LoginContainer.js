@@ -7,7 +7,7 @@ import Register from '../components/Register.js';
 
 const LoginContainer = () => {
   return (
-    <div id="login-container">
+    <div className="container">
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
     </div>

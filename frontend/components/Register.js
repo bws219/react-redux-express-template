@@ -43,15 +43,24 @@ class RegistrationPage extends React.Component {
     event.preventDefault();
   }
 
+  handleCancel(e) {
+    this.props.history.push('/');
+    e.preventDefault();
+  }
+
   render() {
     return (
-      <div id="register-page">
-        <form id="register-form">
+      <div className="page">
+        <Link to="/">Back to Main Page</Link>
+        <form className="form">
           <label>Username</label>
           <FormControl id="username-input" type="text" value={this.state.username} onChange={this.handleUsernameChange} />
           <label>Password</label>
           <FormControl id="password-input" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-          <div id="form-buttons-bar">
+          <div className="form-buttons-bar">
+            <button className="cancel-button" onClick={() => this.handleCancel()}>
+              Cancel
+            </button>
             <button className="bottom-button" onClick={this.handleSubmit}>
               Submit
             </button>
