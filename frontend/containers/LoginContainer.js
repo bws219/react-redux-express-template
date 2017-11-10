@@ -7,7 +7,7 @@ import Register from '../components/Register.js';
 
 const LoginContainer = () => {
   return (
-    <div>
+    <div id="login-container">
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
     </div>
@@ -30,6 +30,6 @@ const mapDispatchToProps = (/* dispatch */) => {
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(LoginContainer);

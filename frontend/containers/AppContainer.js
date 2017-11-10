@@ -6,10 +6,10 @@ import Header from '../components/Header';
 
 const AppContainer = ({ name }) => {
   return (
-        <div>
-          <Header name={name} />
-          <Posts />
-        </div>
+    <div id="container">
+      <Header name={name} />
+      <Posts />
+    </div>
   );
 };
 
@@ -29,6 +29,6 @@ const mapDispatchToProps = (/* dispatch */) => {
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(AppContainer);

@@ -3,12 +3,11 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const routes = require('./backend/routes');
+const { User, Post, Comment, Vote } = require('./models');
 const auth = require('./backend/auth');
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const bodyParser = require('body-parser');
-const Models = require('./models');
-const { User, Post, Comment, Vote } = Models;
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -72,13 +71,12 @@ app.get('/', (request, response) => {
     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/', auth(passport, Models));
-app.use('/', routes(Models));
+app.use('/', auth(passport));
+app.use('/', routes);
 
 app.listen(PORT, error => {
     error

@@ -5,9 +5,9 @@ import Root from './containers/Root';
 
 import './assets/stylesheets/base.scss';
 
-const store = configureStore({name: 'Horizons Reddit'});
+const store = configureStore({ name: 'Horizons Reddit' });
 
 render(
-    <Root store={store} history={history} />,
+    <Root className="test" store={store} history={history} />,
     document.getElementById('root')
 );
