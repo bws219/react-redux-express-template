@@ -19,6 +19,7 @@ module.exports = function (passport) {
 				if (err) {
 					return next(err);
 				}
+				console.log('REQ USER', req.user);
 				return res.json({
 					success: true,
 					message: 'Login successful!'
@@ -35,7 +36,6 @@ module.exports = function (passport) {
 			}
 		})
 			.then((searchResult) => {
-				console.log(searchResult)
 				if (searchResult.length) {
 					res.json({
 						success: false,
@@ -52,6 +52,7 @@ module.exports = function (passport) {
 								success: true,
 								message: 'Registered successfully!'
 							});
+							console.log(insertResult)
 						})
 				}
 			})
