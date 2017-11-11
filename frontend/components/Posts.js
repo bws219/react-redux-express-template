@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 import PostDisplay from './PostDisplay';
 
 class Posts extends React.Component {
@@ -17,7 +18,7 @@ class Posts extends React.Component {
   render() {
     return (
       <div>
-        {this.state.posts.map(p => <PostDisplay post={p} />)}
+        {this.state.posts.map(p => <PostDisplay key={p.id} post={p} />)}
       </div>
     );
   }

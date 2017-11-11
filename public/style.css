@@ -21,6 +21,12 @@
     margin-bottom: 20px;
 }
 
+.comment-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .post {
     display: flex;
     flex-direction: row;
@@ -30,7 +36,12 @@
     margin: 5px 0;
 }
 
-.post div {
+.comment {
+    display: flex;
+    flex-direction: row;
+}
+
+.post div, .post form {
     padding: 0 10px;
 }
 
