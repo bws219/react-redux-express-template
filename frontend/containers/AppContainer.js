@@ -6,7 +6,7 @@ import Header from '../components/Header';
 
 const AppContainer = ({ name }) => {
   return (
-    <div id="container">
+    <div className="main-page">
       <Header name={name} />
       <Posts />
     </div>

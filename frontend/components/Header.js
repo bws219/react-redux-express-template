@@ -1,13 +1,15 @@
 import React from 'react';
-import Title from '../components/Title';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Title from './Title';
+import PostCreate from './PostCreate';
 
 const Header = ({ name }) => {
   return (
-    <div className="row">
+    <div className="header">
       <Title name={name} />
       <Link to="/login">Login or Register</Link>
+      <PostCreate />
     </div>
   );
 };

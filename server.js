@@ -39,11 +39,10 @@ passport.deserializeUser(function (id, done) {
             done(null, user);
         })
         .catch((err) => {
-            console.log(err);
-            done(err, null);
-        })
+          console.log(err);
+          done(err, null);
+        });
 });
-
 
 passport.use(new LocalStrategy(function (username, password, done) {
     User.findOne({
@@ -64,9 +63,9 @@ passport.use(new LocalStrategy(function (username, password, done) {
             return done(null, user);
         })
         .catch((err) => {
-            console.log(err);
-            done(err, null);
-        })
+          console.log(err);
+          done(err, null);
+        });
 }));
 
 app.all('*', function (req, res, next) {
@@ -78,7 +77,7 @@ app.all('*', function (req, res, next) {
 });
 
 app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/public/index.html'); // For React/Redux
+  response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
 
 app.use(passport.initialize());
@@ -89,7 +88,7 @@ app.use('/', auth(passport));
 app.use('/', routes);
 
 app.listen(PORT, error => {
-    error
+  error
         ? console.error(error)
         : console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
 });

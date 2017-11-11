@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 const { User, Post, Comment, Vote } = require('../models');
 
-module.exports = function (passport) {
-
+module.exports = function(passport) {
+  
 	router.post('/login', function (req, res, next) {
 		passport.authenticate('local', function (err, user) {
 			if (err) {
@@ -56,18 +56,19 @@ module.exports = function (passport) {
 						})
 				}
 			})
+    
 			.catch((err) => {
-				res.json({
-					success: false,
-					message: 'Database error:' + err
-				})
-				console.log('Database error:', err);
-			})
-	})
+  res.json({
+    success: false,
+    message: 'Database error:' + err
+  });
+  console.log('Database error:', err);
+});
+  });
 
-	router.post('/logout', (req, res) => {
-		req.logout();
-	})
+  router.post('/logout', (req, res) => {
+    req.logout();
+  });
 
-	return router;
+  return router;
 };
